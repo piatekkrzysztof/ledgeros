@@ -127,7 +127,7 @@ export function Nav() {
                     {link.label}
                     <span className="text-[9px]" style={{ transform: isOpen ? "rotate(180deg)" : "none", display: "inline-block", transition: "transform .2s" }}>▾</span>
                   </button>
-                  <Dropdown items={link.children} open={isOpen} />
+                  <Dropdown items={link.children ?? []} open={isOpen} />
                 </div>
               );
             }
