@@ -187,7 +187,7 @@ export function Nav() {
                   <p className="px-page py-2 font-mono text-[9px] tracking-[.14em] uppercase text-ledger-muted">
                     {link.label}
                   </p>
-                  {link.children.map((child) => (
+                  {(link.children ?? []).map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
