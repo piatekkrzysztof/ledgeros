@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-syne: "Syne", sans-serif;
+    --font-space-mono: "Space Mono", monospace;
+    --font-dm-sans: "DM Sans", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-ink antialiased;
+    font-family: var(--font-dm-sans);
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Neo-brutalist button */
+  .btn {
+    @apply inline-flex items-center gap-2 border-2 border-ink font-body font-semibold text-sm
+           px-5 py-2.5 shadow-neo transition-all duration-100 cursor-pointer whitespace-nowrap;
+  }
+  .btn:hover {
+    @apply -translate-x-0.5 -translate-y-0.5 shadow-neo-hover;
+  }
+  .btn:active {
+    @apply translate-x-0.5 translate-y-0.5 shadow-neo-sm;
+  }
+  .btn:focus-visible {
+    @apply outline-none ring-2 ring-blue ring-offset-2;
+  }
+  .btn-ink {
+    @apply bg-ink text-bg;
+  }
+  .btn-lime {
+    @apply bg-lime text-ink;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-ink;
+  }
+
+  /* Section layout */
+  .section-pad {
+    @apply px-page py-section;
+  }
+
+  /* Typography */
+  .tag {
+    @apply font-mono text-[8.5px] tracking-[.18em] uppercase text-ledger-muted mb-3.5 block;
+  }
+  .display-h {
+    @apply font-display font-extrabold tracking-[-0.045em] leading-[.92];
+  }
+
+  /* KPI badge */
+  .kpi-badge {
+    @apply font-mono text-[9px] px-1.5 py-0.5 border inline-flex items-center gap-1;
+  }
+
+  /* Neo card */
+  .neo-card {
+    @apply border-2 border-ink bg-white;
+  }
+}
+
+/* Ticker — 3x items, animate 1/3 forward for seamless infinite loop */
+.ticker-track {
+  animation: ticker-scroll 28s linear infinite;
+  will-change: transform;
+}
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.3333%); }
+}
+
+/* Hero GSAP scroll narrative overlay */
+.narrative-word {
+  will-change: opacity, transform;
+}
+
+/* Chart breathe */
+.chart-breathe {
+  animation: breathe 4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+@keyframes breathe {
+  0%, 100% { transform: scaleY(1); }
+  50%       { transform: scaleY(1.025); }
+}
+
+/* Metric counter transition */
+.metric-val {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: contents;
+  @apply font-mono font-bold;
+}
