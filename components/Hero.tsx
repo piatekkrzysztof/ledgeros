@@ -244,8 +244,8 @@ export function Hero() {
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-2.5">
-                <button className="btn btn-ink">Uruchom demo</button>
-                <button className="btn btn-ghost">Pokaż jak działa ↗</button>
+                <a href="/contact" className="btn btn-ink">Uruchom demo</a>
+                <a href="#scenariusze" className="btn btn-ghost">Pokaż jak działa ↗</a>
               </div>
 
             </div>

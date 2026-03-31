@@ -98,11 +98,12 @@ export function Pricing() {
                 </div>
               ))}
 
-              <button
+              <a
+                href={plan.featured ? "/contact" : plan.name === "Series" ? "/contact" : "/contact"}
                 className={`btn w-full justify-center mt-1 ${plan.featured ? "btn-lime" : "btn-ghost"}`}
               >
                 {plan.cta} {plan.featured && "→"}
-              </button>
+              </a>
             </motion.div>
           );
         })}
